@@ -42,7 +42,7 @@ docker compose up --build
 ```bash
 docker compose up --build -d
 ```
-4. Route your domain/reverse proxy to container port `3000`.
+4. Route your domain/reverse proxy to host port `5000` (mapped to container port `3000` by default).
 5. Terminate TLS at your reverse proxy/load balancer and enforce HTTPS.
 6. Ensure proxy forwards `Host` and `X-Forwarded-For` headers.
 7. Verify outbound SMTP access from the host so contact emails can be sent.

@@ -51,7 +51,7 @@ Reference values are in `.env.example`.
 ```bash
 docker compose up --build -d
 ```
-5. Configure reverse proxy/load balancer to forward `443 -> 3000` for this service.
+5. Configure reverse proxy/load balancer to forward `443 -> 5000` for this service (default mapping `5000 -> 3000`).
 6. Enforce HTTPS at the proxy layer and set HSTS if managed there.
 7. Confirm proxy forwards `Host` and `X-Forwarded-For`.
 8. Confirm outbound SMTP connectivity from the host/container.
