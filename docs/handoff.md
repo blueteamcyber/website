@@ -24,7 +24,7 @@ docker compose up --build
 
 ## 2) Required environment keys
 
-Set all of these in `.env` locally and in Vercel production:
+Set all of these in `.env` locally and in production:
 
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_ANALYTICS_ENABLED`
@@ -42,14 +42,19 @@ Set all of these in `.env` locally and in Vercel production:
 
 Reference values are in `.env.example`.
 
-## 3) Deployment path (Vercel)
+## 3) Deployment path (Managed Docker hosting)
 
-1. Push this repository to GitHub/GitLab/Bitbucket.
-2. In Vercel, import the repository as a new project.
-3. Add all env vars listed above.
-4. Keep build command as `npm run build`.
-5. Deploy and attach domain `theblueteam.io`.
-6. In Vercel domain settings, enforce HTTPS and confirm DNS records.
+1. Install Docker Engine + Docker Compose plugin on the target host.
+2. Copy the project to the host.
+3. Create `.env` with all required keys listed above.
+4. Start the container:
+```bash
+docker compose up --build -d
+```
+5. Configure reverse proxy/load balancer to forward `443 -> 3000` for this service.
+6. Enforce HTTPS at the proxy layer and set HSTS if managed there.
+7. Confirm proxy forwards `Host` and `X-Forwarded-For`.
+8. Confirm outbound SMTP connectivity from the host/container.
 
 ## 4) Route and component map
 

@@ -35,13 +35,17 @@ npm run build
 docker compose up --build
 ```
 
-## Production deploy target: Vercel
-1. Push repository to Git provider.
-2. In Vercel, create a new project and import this repo.
-3. Set all environment variables from `.env.example`.
-4. Build command: `npm run build`.
-5. Output handled automatically by Next.js.
-6. Attach custom domain `theblueteam.io` and enforce HTTPS in Vercel settings.
+## Production deploy target: Managed hosting with Docker
+1. Provision a host with Docker Engine and Docker Compose plugin.
+2. Copy project files to the host and create a production `.env` from `.env.example`.
+3. Build and run:
+```bash
+docker compose up --build -d
+```
+4. Route your domain/reverse proxy to container port `3000`.
+5. Terminate TLS at your reverse proxy/load balancer and enforce HTTPS.
+6. Ensure proxy forwards `Host` and `X-Forwarded-For` headers.
+7. Verify outbound SMTP access from the host so contact emails can be sent.
 
 ## Security
 - CSP, frame, and content-type hardening headers in `next.config.ts`
