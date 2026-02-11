@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blue Team Cyber Marketing Website
 
-## Getting Started
+Modern single-page marketing site for Blue Team Cyber built with Next.js App Router + TypeScript + Tailwind.
 
-First, run the development server:
+## Stack
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS v4
+- Server Actions for contact handling
+- Nodemailer SMTP delivery
+- Vitest for unit tests
 
+## Local development
+1. Copy env template:
 ```bash
+cp .env.example .env
+```
+2. Install deps and run:
+```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+3. Open `http://localhost:3000`.
+
+## Validation commands
+```bash
+npm run lint
+npm run test
+npm run typecheck
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Docker (local production-like)
+```bash
+docker compose up --build
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production deploy target: Vercel
+1. Push repository to Git provider.
+2. In Vercel, create a new project and import this repo.
+3. Set all environment variables from `.env.example`.
+4. Build command: `npm run build`.
+5. Output handled automatically by Next.js.
+6. Attach custom domain `theblueteam.io` and enforce HTTPS in Vercel settings.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Security
+- CSP, frame, and content-type hardening headers in `next.config.ts`
+- Honeypot field and IP-based rate limiting on contact server action
+- SMTP credentials handled through environment variables only
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Content placeholders
+Missing business-specific copy is explicitly marked `TODO:` in the UI copy.
