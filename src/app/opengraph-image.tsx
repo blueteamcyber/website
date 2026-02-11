@@ -20,15 +20,15 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           background:
-            "radial-gradient(circle at 15% 20%, rgba(79,124,255,0.4), transparent 35%), radial-gradient(circle at 85% 10%, rgba(122,98,255,0.4), transparent 32%), linear-gradient(180deg, #060b1a 0%, #08122b 100%)",
-          color: "#e8ecff",
+            "radial-gradient(circle at 18% 18%, rgba(20,89,126,0.45), transparent 34%), radial-gradient(circle at 84% 12%, rgba(29,106,144,0.34), transparent 30%), linear-gradient(180deg, #000000 0%, #04080b 100%)",
+          color: "#dbe7ed",
           padding: "68px 72px",
         }}
       >
-        <div style={{ fontSize: 28, letterSpacing: 6, color: "#88a5ff" }}>BLUE TEAM CYBER</div>
+        <div style={{ fontSize: 28, letterSpacing: 6, color: "#70abc7" }}>BLUE TEAM CYBER</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 920 }}>
           <div style={{ fontSize: 72, lineHeight: 1.06, fontWeight: 700 }}>{siteConfig.tagline}</div>
-          <div style={{ fontSize: 34, color: "#c4cef6" }}>{siteConfig.subTagline}</div>
+          <div style={{ fontSize: 34, color: "#9cb2bd" }}>{siteConfig.subTagline}</div>
         </div>
       </div>
     ),

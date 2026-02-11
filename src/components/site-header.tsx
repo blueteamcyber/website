@@ -8,7 +8,7 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ navItems }: SiteHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050b1ecf] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/85 backdrop-blur-xl">
       <div className="section-container flex h-16 items-center justify-between">
         <Link
           href="#home"

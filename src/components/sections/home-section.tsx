@@ -25,7 +25,7 @@ export function HomeSection({ headline, subHeadline, pillars }: HomeSectionProps
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{subHeadline}</p>
           </div>
-          <div className="glass-panel rounded-3xl p-6 shadow-2xl shadow-[#070f2a]/80">
+          <div className="glass-panel rounded-3xl p-6 shadow-2xl shadow-[#05131b]/70">
             <Image
               src="/globe.svg"
               alt="Global cyber resilience illustration"
