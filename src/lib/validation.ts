@@ -1,9 +1,19 @@
 import { z } from "zod";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(120, "Name is too long"),
+  name: z
+    .string()
+    .trim()
+    .min(1, "Name is required")
+    .max(120, "Name is too long")
+    .refine((value) => !/[\r\n]/.test(value), "Name contains invalid characters"),
   email: z.email("Enter a valid email address").max(255, "Email is too long"),
-  subject: z.string().trim().min(1, "Subject is required").max(160, "Subject is too long"),
+  subject: z
+    .string()
+    .trim()
+    .min(1, "Subject is required")
+    .max(160, "Subject is too long")
+    .refine((value) => !/[\r\n]/.test(value), "Subject contains invalid characters"),
   message: z
     .string()
     .trim()

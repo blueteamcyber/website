@@ -47,4 +47,19 @@ describe("validateContactInput", () => {
       expect(result.isSpam).toBe(true);
     }
   });
+
+  it("rejects newline characters in subject to prevent header injection", () => {
+    const result = validateContactInput({
+      name: "Jamie",
+      email: "jamie@example.com",
+      subject: "Hello\nInjected",
+      message: "Message body is long enough for validation.",
+      website: "",
+    });
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.errors.subject).toContain("Subject contains invalid characters");
+    }
+  });
 });

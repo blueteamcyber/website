@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --font-sans: var(--font-space-grotesk);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: "Avenir Next", "Nunito Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", "SFMono-Regular", monospace;
   --background: #060b1a;
   --surface: #0b1230;
   --surface-soft: #111a44;

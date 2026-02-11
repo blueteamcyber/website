@@ -34,11 +34,32 @@ export const initialContactState: ContactActionState = {
   message: "",
 };
 
+function hasValidOrigin(originHeader: string | null, hostHeader: string | null): boolean {
+  if (!originHeader || !hostHeader) {
+    return true;
+  }
+
+  try {
+    const origin = new URL(originHeader);
+    return origin.host === hostHeader;
+  } catch {
+    return false;
+  }
+}
+
 export async function submitContactForm(
   _prevState: ContactActionState,
   formData: FormData,
 ): Promise<ContactActionState> {
   const headerList = await headers();
+
+  if (!hasValidOrigin(headerList.get("origin"), headerList.get("host"))) {
+    return {
+      status: "error",
+      message: "Request origin could not be verified.",
+    };
+  }
+
   const ipAddress = getClientIp(headerList.get("x-forwarded-for"), headerList.get("x-real-ip"));
   const limit = limiter.check(ipAddress);
 
