@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+  --background: #060b1a;
+  --surface: #0b1230;
+  --surface-soft: #111a44;
+  --foreground: #e8ecff;
+  --muted: #aab4e8;
+  --brand: #4f7cff;
+  --brand-soft: #7a62ff;
+  --ring: #88d2ff;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  min-height: 100vh;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, rgb(79 124 255 / 0.27), transparent 33%),
+    radial-gradient(circle at 90% 15%, rgb(122 98 255 / 0.25), transparent 25%),
+    linear-gradient(180deg, #030817 0%, #060b1a 50%, #070f23 100%);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgb(122 98 255 / 0.4);
+  color: #f8f9ff;
+}
+
+.glass-panel {
+  background: linear-gradient(
+    160deg,
+    rgb(17 26 68 / 0.7) 0%,
+    rgb(11 18 48 / 0.88) 100%
+  );
+  border: 1px solid rgb(255 255 255 / 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.section-container {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-inline: 1.5rem;
+  }
 }
